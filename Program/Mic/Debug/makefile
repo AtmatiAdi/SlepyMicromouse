@@ -40,8 +40,8 @@ Mic.bin \
 all: Mic.elf secondary-outputs
 
 # Tool invocations
-Mic.elf: $(OBJS) $(USER_OBJS) D:\1.Projects\1.Roboty\5.Micromouse\Program\Mic\STM32F103CBTX_FLASH.ld
-	arm-none-eabi-gcc -o "Mic.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\1.Projects\1.Roboty\5.Micromouse\Program\Mic\STM32F103CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Mic.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Mic.elf: $(OBJS) $(USER_OBJS) D:\0.GitProjects\SlepyMicromouse\Program\Mic\STM32F103CBTX_FLASH.ld
+	arm-none-eabi-gcc -o "Mic.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\0.GitProjects\SlepyMicromouse\Program\Mic\STM32F103CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Mic.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

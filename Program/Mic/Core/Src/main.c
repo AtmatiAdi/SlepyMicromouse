@@ -202,10 +202,10 @@ int main(void)
 
   MPU6050_Init(&hi2c2);
 
-  MpuConfig.Accel_Full_Scale = AFS_SEL_8g;
+  MpuConfig.Accel_Full_Scale = AFS_SEL_4g;
   MpuConfig.ClockSource = Internal_8MHz;
   MpuConfig.CONFIG_DLPF = DLPF_260A_256G_Hz;
-  MpuConfig.Gyro_Full_Scale = FS_SEL_1000;
+  MpuConfig.Gyro_Full_Scale = FS_SEL_500;
   MpuConfig.Sleep_Mode_Bit = 0;
   MPU6050_Config(&MpuConfig);
 
