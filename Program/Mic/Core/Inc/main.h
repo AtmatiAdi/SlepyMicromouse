@@ -62,6 +62,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define MOTOR_PRESCALLER 72-1
 #define MOTOR_COUNTER 1024-1
+#define TIM_PRE 72000-1
 #define LED_Pin GPIO_PIN_13
 #define LED_GPIO_Port GPIOC
 #define BAT_3V7_Pin GPIO_PIN_3

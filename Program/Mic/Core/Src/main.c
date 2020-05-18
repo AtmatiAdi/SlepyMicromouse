@@ -1,19 +1,19 @@
 /* USER CODE BEGIN Header */
 /*
 
-███╗░░░███╗██╗░█████╗░██████╗░░█████╗░███╗░░░███╗░█████╗░██╗░░░██╗░██████╗███████╗
-████╗░████║██║██╔══██╗██╔══██╗██╔══██╗████╗░████║██╔══██╗██║░░░██║██╔════╝██╔════╝
-██╔████╔██║██║██║░░╚═╝██████╔╝██║░░██║██╔████╔██║██║░░██║██║░░░██║╚█████╗░█████╗░░
-██║╚██╔╝██║██║██║░░██╗██╔══██╗██║░░██║██║╚██╔╝██║██║░░██║██║░░░██║░╚═══██╗██╔══╝░░
-██║░╚═╝░██║██║╚█████╔╝██║░░██║╚█████╔╝██║░╚═╝░██║╚█████╔╝╚██████╔╝██████╔╝███████╗
-╚═╝░░░░░╚═╝╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░░░░╚═╝░╚════╝░░╚═════╝░╚═════╝░╚══════╝
+�?�?�?╗░░░�?�?�?╗�?�?╗░�?�?�?�?�?╗░�?�?�?�?�?�?╗░░�?�?�?�?�?╗░�?�?�?╗░░░�?�?�?╗░�?�?�?�?�?╗░�?�?╗░░░�?�?╗░�?�?�?�?�?�?╗�?�?�?�?�?�?�?╗
+�?�?�?�?╗░�?�?�?�?║�?�?║�?�?╔�?�?�?�?╗�?�?╔�?�?�?�?╗�?�?╔�?�?�?�?╗�?�?�?�?╗░�?�?�?�?║�?�?╔�?�?�?�?╗�?�?║░░░�?�?║�?�?╔�?�?�?�?╝�?�?╔�?�?�?�?╝
+�?�?╔�?�?�?�?╔�?�?║�?�?║�?�?║░░╚�?╝�?�?�?�?�?�?╔╝�?�?║░░�?�?║�?�?╔�?�?�?�?╔�?�?║�?�?║░░�?�?║�?�?║░░░�?�?║╚�?�?�?�?�?╗░�?�?�?�?�?╗░░
+�?�?║╚�?�?╔╝�?�?║�?�?║�?�?║░░�?�?╗�?�?╔�?�?�?�?╗�?�?║░░�?�?║�?�?║╚�?�?╔╝�?�?║�?�?║░░�?�?║�?�?║░░░�?�?║░╚�?�?�?�?�?╗�?�?╔�?�?╝░░
+�?�?║░╚�?╝░�?�?║�?�?║╚�?�?�?�?�?╔╝�?�?║░░�?�?║╚�?�?�?�?�?╔╝�?�?║░╚�?╝░�?�?║╚�?�?�?�?�?╔╝╚�?�?�?�?�?�?╔╝�?�?�?�?�?�?╔╝�?�?�?�?�?�?�?╗
+╚�?╝░░░░░╚�?╝╚�?╝░╚�?�?�?�?╝░╚�?╝░░╚�?╝░╚�?�?�?�?╝░╚�?╝░░░░░╚�?╝░╚�?�?�?�?╝░░╚�?�?�?�?�?╝░╚�?�?�?�?�?╝░╚�?�?�?�?�?�?╝
 
-░██████╗░░░███╗░░░███╗  ██╗░░░██╗░░███╗░░
-██╔════╝░░░████╗░████║  ██║░░░██║░████║░░
-╚█████╗░░░░██╔████╔██║  ╚██╗░██╔╝██╔██║░░
-░╚═══██╗░░░██║╚██╔╝██║  ░╚████╔╝░╚═╝██║░░
-██████╔╝██╗██║░╚═╝░██║  ░░╚██╔╝░░███████╗
-╚═════╝░╚═╝╚═╝░░░░░╚═╝  ░░░╚═╝░░░╚══════╝
+░�?�?�?�?�?�?╗░░░�?�?�?╗░░░�?�?�?╗�?�?�?�?╗░░░�?�?╗░░�?�?�?╗░░
+�?�?╔�?�?�?�?╝░░░�?�?�?�?╗░�?�?�?�?║�?�?�?�?║░░░�?�?║░�?�?�?�?║░░
+╚�?�?�?�?�?╗░░░░�?�?╔�?�?�?�?╔�?�?║�?�?╚�?�?╗░�?�?╔╝�?�?╔�?�?║░░
+░╚�?�?�?�?�?╗░░░�?�?║╚�?�?╔╝�?�?║�?�?░╚�?�?�?�?╔╝░╚�?╝�?�?║░░
+�?�?�?�?�?�?╔╝�?�?╗�?�?║░╚�?╝░�?�?║�?�?░░╚�?�?╔╝░░�?�?�?�?�?�?�?╗
+╚�?�?�?�?�?╝░╚�?╝╚�?╝░░░░░╚�?╝�?�?░░░╚�?╝░░░╚�?�?�?�?�?�?╝
 */
 /* USER CODE END Header */
 
@@ -23,16 +23,28 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "MY_NRF24.h"
-#include "TJ_MPU6050.h"
+//#include "TJ_MPU6050.h"
+#include "AccelGyro.h"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+// Funkcja to paczka danych
 #define FUNC_ACCEL_GYRO_DATA	128
 #define FUNC_JOYSTICK_DATA		129
 #define FUNC_ACCEL_GYRO_COMBO	130
-
+// Tryb to trybie pracy
+#define MODE_ACCELERATION_BURST 160
+#define MODE_VELOCITY_BURST		161
+#define MODE_DISTANCE_BURST		162
+// Program to jakies zadanie do zrealizowania
+#define PROG_CALLIBRATE			192
+#define PROG_RESET_VEL_DIST		193
+#define PROG_MOVE_BREAK			194
+#define PROG_ROTATE				195
+// Odpowiedz ze cos gotowe i zwraca wartosc
+#define OK						255
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -51,6 +63,8 @@ I2C_HandleTypeDef hi2c2;
 
 SPI_HandleTypeDef hspi1;
 
+TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
@@ -67,6 +81,8 @@ static void MX_I2C2_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_TIM2_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -74,22 +90,28 @@ static void MX_USART1_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint64_t PipeAddres = 0x11223344AA;
+char Msg[32] = "HI";
+char RF_RxData[32];
+int Flag = 0;
+int Counter = 0;
+int mode = MODE_ACCELERATION_BURST;
+
 
 void MotorSetValue(int16_t Left, int16_t Right)
 {
-	if (Left > 0) {
-		SetPwm(Left, 1);
+	if (Right > 0) {
+		SetPwm(Right, 1);
 		SetPwm(0, 2);
 	} else {
 		SetPwm(0, 1);
-		SetPwm(-1 * Left, 2);
+		SetPwm(-1 * Right, 2);
 	}
-	if (Right > 0) {
-		SetPwm(Right, 4);
+	if (Left > 0) {
+		SetPwm(Left, 4);
 		SetPwm(0, 3);
 	} else {
 		SetPwm(0, 4);
-		SetPwm(-1 * Right, 3);
+		SetPwm(-1 * Left, 3);
 	}
 
 
@@ -140,6 +162,46 @@ double MapValue2(double input, double input_start,double input_end,double output
 	double slope = 1.0 * (output_end - output_start) / (input_end - input_start);
 	return output_start + slope * (input - input_start);
 }
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	if (htim->Instance == htim3.Instance){
+		Flag = 1;
+	}
+}
+
+int Serial_Send(uint8_t* Buf, uint32_t *Len){
+	CDC_Transmit_FS(Buf, Len);
+	return &Len;
+}
+
+void SendInt(int Number){
+	char in[10], out[10];
+	int a = 0;
+	int num;
+	while ((Number / 10 > 0) || (Number % 10) > 0){
+		num = (Number % 10);
+		in[a] = num + '0';
+		Number = Number / 10;
+		a++;
+	}
+	//for (int b = a - 1; b >= 0; b--) {
+	//	out[a - 1 - b] = in[b];
+	//}
+	if (a > 0) {
+		CDC_Transmit_FS(in, a);
+	}
+}
+
+void SendReturn(short val){
+	Msg[0] = OK;
+	Msg[1] = val;
+	Msg[2] = val >> 8;
+	if (NRF24_write(Msg, 3))
+	  {
+		  //HAL_Delay(1);
+		  NRF24_read(RF_RxData, 16);
+	  }
+}
 /* USER CODE END 0 */
 
 /**
@@ -149,12 +211,6 @@ double MapValue2(double input, double input_start,double input_end,double output
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
-	MPU_ConfigTypeDef MpuConfig;
-	RawData_Def AccelData, GyroData;
-	ScaledData_Def AccelScaled, GyroScaled;
-	char Msg[32] = "HI";
-	char RF_RxData[32];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -180,84 +236,146 @@ int main(void)
   MX_SPI1_Init();
   MX_TIM4_Init();
   MX_USART1_UART_Init();
+  MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
-  NRF24_begin(CSN_GPIO_Port, CSN_Pin, CE_Pin, hspi1);
+  // Timer
+  HAL_TIM_Base_Start_IT(&htim3);
 
+  // NRF
+  NRF24_begin(CSN_GPIO_Port, CSN_Pin, CE_Pin, hspi1);
   NRF24_stopListening();
   NRF24_openWritingPipe(PipeAddres);
   NRF24_setAutoAck(true);
   NRF24_setChannel(52);
   NRF24_setPayloadSize(13);
-
   NRF24_enableDynamicPayloads();
   NRF24_enableAckPayload();
 
+  // MPU
   __HAL_RCC_I2C2_FORCE_RESET();
   __HAL_RCC_I2C2_RELEASE_RESET();
   MX_I2C2_Init();
   __HAL_RCC_I2C2_FORCE_RESET();
   __HAL_RCC_I2C2_RELEASE_RESET();
   MX_I2C2_Init();
-
-  MPU6050_Init(&hi2c2);
-
-  MpuConfig.Accel_Full_Scale = AFS_SEL_4g;
-  MpuConfig.ClockSource = Internal_8MHz;
-  MpuConfig.CONFIG_DLPF = DLPF_260A_256G_Hz;
-  MpuConfig.Gyro_Full_Scale = FS_SEL_500;
-  MpuConfig.Sleep_Mode_Bit = 0;
-  MPU6050_Config(&MpuConfig);
-
+  Init(&hi2c2, &htim2);	// NIC NIE MOZE BYC PO TYM, URUCHAMIA SIE ZEGAR DO CALKOWANIA
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-
-	  //__HAL_RCC_I2C2_FORCE_RESET();
-	  //__HAL_RCC_I2C2_RELEASE_RESET();
-	  //MX_I2C2_Init();
-	  //__HAL_RCC_I2C2_FORCE_RESET();
-	  //__HAL_RCC_I2C2_RELEASE_RESET();
-	  //MX_I2C2_Init();
-
-	  MPU6050_Get_Accel_RawData(&AccelData);	// Najpier trzeba akcelerometr
-	  MPU6050_Get_Gyro_RawData(&GyroData);		// Potem zyroskop
+	  Update();
+	  switch (mode){
+	  case MODE_ACCELERATION_BURST: {
+		  GetAcceleration(Msg, 1);
+		  break;
+	  }
+	  case MODE_VELOCITY_BURST: {
+		  GetVelocity(Msg, 1);
+		  break;
+	  }
+	  case MODE_DISTANCE_BURST: {
+		  GetDistance(Msg, 1);
+		  break;
+	  }
+	  }
 
 	  Msg[0] = FUNC_ACCEL_GYRO_DATA;
-	  Msg[1] = AccelData.x;
-	  Msg[2] = AccelData.x >> 8;
-	  Msg[3] = AccelData.y;
-	  Msg[4] = AccelData.y >> 8;
-	  Msg[5] = AccelData.z;
-	  Msg[6] = AccelData.z >> 8;
-
-	  Msg[7] = GyroData.x;
-	  Msg[8] = GyroData.x >> 8;
-	  Msg[9] = GyroData.y;
-	  Msg[10] = GyroData.y >> 8;
-	  Msg[11] = GyroData.z;
-	  Msg[12] = GyroData.z >> 8;
 
 	  if (NRF24_write(Msg, 13))
 	  {
 		  //HAL_Delay(1);
 		  NRF24_read(RF_RxData, 16);
-
 	  }
-
+	  //Counter ++;
 	  HAL_Delay(1);
-	  if (RF_RxData[0] == FUNC_JOYSTICK_DATA) {
-		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	  switch (RF_RxData[0]) {
+	  case FUNC_JOYSTICK_DATA: {
+		  //HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		  int16_t Forward = (unsigned char)RF_RxData[1] | (((uint16_t)RF_RxData[2]) << 8);
 		  int16_t Direction = (unsigned char)RF_RxData[3] | (((uint16_t)RF_RxData[4]) << 8);
 		  int16_t Left = Forward + Direction;
 		  int16_t Right = Forward - Direction;
 
 		  MotorSetValue(Left, Right);
+		  break;
+	  }
+	  case PROG_CALLIBRATE: {
+		  Callibrate(RF_RxData[1]);
+		  SendReturn(0);
+		  break;
+	  }
+	  case MODE_ACCELERATION_BURST: {
+		  mode = MODE_ACCELERATION_BURST;
+		  break;
+	  }
+	  case MODE_VELOCITY_BURST: {
+		  mode = MODE_VELOCITY_BURST;
+		  break;
+	  }
+	  case MODE_DISTANCE_BURST: {
+		  mode = MODE_DISTANCE_BURST;
+		  break;
+	  }
+	  case PROG_MOVE_BREAK: {
+		  // PROG - START - ACCEL - MAX - DIST - STOP
+		  short SSpeed = (unsigned char)RF_RxData[1] | (((uint16_t)RF_RxData[2]) << 8);
+		  short ASpeed = (unsigned char)RF_RxData[3] | (((uint16_t)RF_RxData[4]) << 8);
+		  short MSpeed = (unsigned char)RF_RxData[5] | (((uint16_t)RF_RxData[6]) << 8);
+		  short Dist = (unsigned char)RF_RxData[7] | (((uint16_t)RF_RxData[8]) << 8);
+		  short ReturnDist = 0;
+		  short Stop = (unsigned char)RF_RxData[9] | (((uint16_t)RF_RxData[10]) << 8);
+		  Callibrate(255);
+		  Update();
+		  while(ReturnDist < Dist){
+			  if (SSpeed <= MSpeed) {
+				  MotorSetValue(SSpeed, SSpeed);
+				  SSpeed += ASpeed;
+			  }
+			  ReturnDist = Distance[0]/1000000000000;
+			  Update();
+			  if ((Acceleration[0] > Stop) || (Acceleration[1] > Stop) || (Acceleration[2] > Stop)){
+				  break;	// Uderzenie
+			  }
+		  }
+		  MotorSetValue(0, 0);
+		  SendReturn(ReturnDist);
+		  break;
+	  }
+	  case PROG_ROTATE: {
+		  // PROG - START - ACCEL - MAX - ANGLE
+		  short SSpeed = (unsigned char)RF_RxData[1] | (((uint16_t)RF_RxData[2]) << 8);
+		  short ASpeed = (unsigned char)RF_RxData[3] | (((uint16_t)RF_RxData[4]) << 8);
+		  short MSpeed = (unsigned char)RF_RxData[5] | (((uint16_t)RF_RxData[6]) << 8);
+		  short Angle = (unsigned char)RF_RxData[7] | (((uint16_t)RF_RxData[8]) << 8);
+		  short ReturnAngle = 0;
+		  Callibrate(255);
+		  Update();
+		  while(ReturnAngle < Angle){
+			  if (SSpeed <= MSpeed) {
+				  if (Angle > 0) MotorSetValue(-SSpeed, SSpeed);
+				  else MotorSetValue(SSpeed, -SSpeed);
+				  SSpeed += ASpeed;
+			  }
+			  ReturnAngle = Velocity[5]/1000000;
+			  Update();
+		  }
+		  MotorSetValue(0, 0);
+		  SendReturn(ReturnAngle);
+		  break;
+	  }
+	  }
+
+	  if (Flag == 1) {
+		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		  //char c[3] = {'<', '-'};
+		  //SendInt(Counter);
+		  //Serial_Send(c, 2);
+		  //Counter = 0;
+		  Flag = 0;
 	  }
 	  //HAL_Delay(1);
     /* USER CODE END WHILE */
@@ -413,7 +531,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -425,6 +543,96 @@ static void MX_SPI1_Init(void)
   /* USER CODE BEGIN SPI1_Init 2 */
 
   /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 72-1;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 65535-1;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 7200-1;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 10000-1;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
 
 }
 

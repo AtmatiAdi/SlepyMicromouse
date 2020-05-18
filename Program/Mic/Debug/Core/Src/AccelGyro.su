@@ -1,0 +1,6 @@
+AccelGyro.c:10:6:Init	32	static
+AccelGyro.c:26:6:Update	40	static
+AccelGyro.c:52:6:Callibrate	64	static
+AccelGyro.c:77:6:GetAcceleration	24	static
+AccelGyro.c:84:6:GetVelocity	32	static
+AccelGyro.c:93:6:GetDistance	32	static
