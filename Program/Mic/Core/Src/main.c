@@ -100,21 +100,19 @@ int mode = MODE_ACCELERATION_BURST;
 void MotorSetValue(int16_t Left, int16_t Right)
 {
 	if (Right > 0) {
-		SetPwm(Right, 1);
-		SetPwm(0, 2);
+		SetPwm(Right, 3);
+		SetPwm(0, 4);
 	} else {
-		SetPwm(0, 1);
-		SetPwm(-1 * Right, 2);
+		SetPwm(0, 3);
+		SetPwm(-1 * Right, 4);
 	}
 	if (Left > 0) {
-		SetPwm(Left, 4);
-		SetPwm(0, 3);
+		SetPwm(Left, 2);
+		SetPwm(0, 1);
 	} else {
-		SetPwm(0, 4);
-		SetPwm(-1 * Left, 3);
+		SetPwm(0, 2);
+		SetPwm(-1 * Left, 1);
 	}
-
-
 }
 
 void SetPwm(uint16_t Value, uint16_t Channel) {
@@ -267,6 +265,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  //MotorSetValue(0, 255);
 	  Update();
 	  switch (mode){
 	  case MODE_ACCELERATION_BURST: {
@@ -328,17 +327,35 @@ int main(void)
 		  short Dist = (unsigned char)RF_RxData[7] | (((uint16_t)RF_RxData[8]) << 8);
 		  short ReturnDist = 0;
 		  short Stop = (unsigned char)RF_RxData[9] | (((uint16_t)RF_RxData[10]) << 8);
+		  double Rot;
+		  double P = 0.05, I = 0.2;
 		  Callibrate(255);
 		  Update();
-		  while(ReturnDist < Dist){
-			  if (SSpeed <= MSpeed) {
-				  MotorSetValue(SSpeed, SSpeed);
-				  SSpeed += ASpeed;
+		  if (Dist > 0){
+			  while(ReturnDist < Dist){
+				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
+				  if (SSpeed < MSpeed) {
+					  SSpeed += ASpeed;
+				  }
+				  MotorSetValue(-SSpeed -Rot, -SSpeed + Rot);
+				  ReturnDist = Distance[0]/1000000000000;
+				  Update();
+				  if ((Acceleration[0] > Stop) || (Acceleration[1] > Stop) || (Acceleration[2] > Stop)){
+					  break;	// Uderzenie
+				  }
 			  }
-			  ReturnDist = Distance[0]/1000000000000;
-			  Update();
-			  if ((Acceleration[0] > Stop) || (Acceleration[1] > Stop) || (Acceleration[2] > Stop)){
-				  break;	// Uderzenie
+		  } else {
+			  while(ReturnDist > Dist){
+				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
+				  if (SSpeed < MSpeed) {
+					  SSpeed += ASpeed;
+				  }
+				  MotorSetValue(SSpeed -Rot, SSpeed + Rot);
+				  ReturnDist = Distance[0]/1000000000000;
+				  Update();
+				  if ((Acceleration[0] > Stop) || (Acceleration[1] > Stop) || (Acceleration[2] > Stop)){
+					  break;	// Uderzenie
+				  }
 			  }
 		  }
 		  MotorSetValue(0, 0);
@@ -354,14 +371,24 @@ int main(void)
 		  short ReturnAngle = 0;
 		  Callibrate(255);
 		  Update();
-		  while(ReturnAngle < Angle){
-			  if (SSpeed <= MSpeed) {
-				  if (Angle > 0) MotorSetValue(-SSpeed, SSpeed);
-				  else MotorSetValue(SSpeed, -SSpeed);
-				  SSpeed += ASpeed;
+		  if (Angle > 0){
+			  while(ReturnAngle < Angle){
+				  if (SSpeed <= MSpeed) {
+					  MotorSetValue(SSpeed, -SSpeed);
+					  SSpeed += ASpeed;
+				  }
+				  ReturnAngle = Velocity[5]/1000000;
+				  Update();
 			  }
-			  ReturnAngle = Velocity[5]/1000000;
-			  Update();
+		  } else {
+			  while(ReturnAngle > Angle){
+				  if (SSpeed <= MSpeed) {
+					  MotorSetValue(-SSpeed, SSpeed);
+					  SSpeed += ASpeed;
+				  }
+				  ReturnAngle = Velocity[5]/1000000;
+				  Update();
+			  }
 		  }
 		  MotorSetValue(0, 0);
 		  SendReturn(ReturnAngle);
