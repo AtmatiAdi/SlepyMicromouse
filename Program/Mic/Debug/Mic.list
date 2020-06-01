@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  0001625e  00000000  00000000  00039580  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0000dc2e  00000000  00000000  0004f7de  2**0
+ 17 .debug_line   0000dc30  00000000  00000000  0004f7de  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    0007ce7d  00000000  00000000  0005d40c  2**0
+ 18 .debug_str    0007ce7d  00000000  00000000  0005d40e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  000da289  2**0
+ 19 .comment      0000007b  00000000  00000000  000da28b  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000058d0  00000000  00000000  000da304  2**2
+ 20 .debug_frame  000058d0  00000000  00000000  000da308  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -5629,7 +5629,7 @@ int main(void)
  8002d32:	021b      	lsls	r3, r3, #8
  8002d34:	b21b      	sxth	r3, r3
  8002d36:	4313      	orrs	r3, r2
- 8002d38:	86fb      	strh	r3, [r7, #54]	; 0x36
+ 8002d38:	853b      	strh	r3, [r7, #40]	; 0x28
 		  short ASpeed = (unsigned char)RF_RxData[3] | (((uint16_t)RF_RxData[4]) << 8);
  8002d3a:	4bb7      	ldr	r3, [pc, #732]	; (8003018 <main+0x5b8>)
  8002d3c:	78db      	ldrb	r3, [r3, #3]
@@ -5639,7 +5639,7 @@ int main(void)
  8002d44:	021b      	lsls	r3, r3, #8
  8002d46:	b21b      	sxth	r3, r3
  8002d48:	4313      	orrs	r3, r2
- 8002d4a:	853b      	strh	r3, [r7, #40]	; 0x28
+ 8002d4a:	84fb      	strh	r3, [r7, #38]	; 0x26
 		  short MSpeed = (unsigned char)RF_RxData[5] | (((uint16_t)RF_RxData[6]) << 8);
  8002d4c:	4bb2      	ldr	r3, [pc, #712]	; (8003018 <main+0x5b8>)
  8002d4e:	795b      	ldrb	r3, [r3, #5]
@@ -5649,7 +5649,7 @@ int main(void)
  8002d56:	021b      	lsls	r3, r3, #8
  8002d58:	b21b      	sxth	r3, r3
  8002d5a:	4313      	orrs	r3, r2
- 8002d5c:	84fb      	strh	r3, [r7, #38]	; 0x26
+ 8002d5c:	86fb      	strh	r3, [r7, #54]	; 0x36
 		  short Dist = (unsigned char)RF_RxData[7] | (((uint16_t)RF_RxData[8]) << 8);
  8002d5e:	4bae      	ldr	r3, [pc, #696]	; (8003018 <main+0x5b8>)
  8002d60:	79db      	ldrb	r3, [r3, #7]
@@ -5729,18 +5729,18 @@ int main(void)
  8002e0a:	460c      	mov	r4, r1
  8002e0c:	e9c7 3402 	strd	r3, r4, [r7, #8]
 				  if (SSpeed < MSpeed) {
- 8002e10:	f9b7 2036 	ldrsh.w	r2, [r7, #54]	; 0x36
- 8002e14:	f9b7 3026 	ldrsh.w	r3, [r7, #38]	; 0x26
+ 8002e10:	f9b7 2028 	ldrsh.w	r2, [r7, #40]	; 0x28
+ 8002e14:	f9b7 3036 	ldrsh.w	r3, [r7, #54]	; 0x36
  8002e18:	429a      	cmp	r2, r3
  8002e1a:	da04      	bge.n	8002e26 <main+0x3c6>
-					  SSpeed += ASpeed;
+					  MSpeed -= ASpeed;
  8002e1c:	8efa      	ldrh	r2, [r7, #54]	; 0x36
- 8002e1e:	8d3b      	ldrh	r3, [r7, #40]	; 0x28
- 8002e20:	4413      	add	r3, r2
+ 8002e1e:	8cfb      	ldrh	r3, [r7, #38]	; 0x26
+ 8002e20:	1ad3      	subs	r3, r2, r3
  8002e22:	b29b      	uxth	r3, r3
  8002e24:	86fb      	strh	r3, [r7, #54]	; 0x36
 				  }
-				  MotorSetValue(-SSpeed -Rot, -SSpeed + Rot);
+				  MotorSetValue(-MSpeed -Rot, -MSpeed + Rot);
  8002e26:	f9b7 3036 	ldrsh.w	r3, [r7, #54]	; 0x36
  8002e2a:	425b      	negs	r3, r3
  8002e2c:	4618      	mov	r0, r3
@@ -5845,18 +5845,18 @@ int main(void)
  8002f2a:	460c      	mov	r4, r1
  8002f2c:	e9c7 3402 	strd	r3, r4, [r7, #8]
 				  if (SSpeed < MSpeed) {
- 8002f30:	f9b7 2036 	ldrsh.w	r2, [r7, #54]	; 0x36
- 8002f34:	f9b7 3026 	ldrsh.w	r3, [r7, #38]	; 0x26
+ 8002f30:	f9b7 2028 	ldrsh.w	r2, [r7, #40]	; 0x28
+ 8002f34:	f9b7 3036 	ldrsh.w	r3, [r7, #54]	; 0x36
  8002f38:	429a      	cmp	r2, r3
  8002f3a:	da04      	bge.n	8002f46 <main+0x4e6>
-					  SSpeed += ASpeed;
+					  MSpeed -= ASpeed;
  8002f3c:	8efa      	ldrh	r2, [r7, #54]	; 0x36
- 8002f3e:	8d3b      	ldrh	r3, [r7, #40]	; 0x28
- 8002f40:	4413      	add	r3, r2
+ 8002f3e:	8cfb      	ldrh	r3, [r7, #38]	; 0x26
+ 8002f40:	1ad3      	subs	r3, r2, r3
  8002f42:	b29b      	uxth	r3, r3
  8002f44:	86fb      	strh	r3, [r7, #54]	; 0x36
 				  }
-				  MotorSetValue(SSpeed -Rot, SSpeed + Rot);
+				  MotorSetValue(MSpeed -Rot, MSpeed + Rot);
  8002f46:	f9b7 3036 	ldrsh.w	r3, [r7, #54]	; 0x36
  8002f4a:	4618      	mov	r0, r3
  8002f4c:	f7fd fa5a 	bl	8000404 <__aeabi_i2d>
@@ -5942,7 +5942,9 @@ int main(void)
  800301c:	20000290 	.word	0x20000290
  8003020:	200002a8 	.word	0x200002a8
  8003024:	20000218 	.word	0x20000218
-	  }
+		  SendReturn(ReturnDist);
+		  break;
+	  }*/
 	  case PROG_ROTATE: {
 		  // PROG - START - ACCEL - MAX - ANGLE
 		  short SSpeed = (unsigned char)RF_RxData[1] | (((uint16_t)RF_RxData[2]) << 8);
@@ -5954,7 +5956,7 @@ int main(void)
  8003032:	021b      	lsls	r3, r3, #8
  8003034:	b21b      	sxth	r3, r3
  8003036:	4313      	orrs	r3, r2
- 8003038:	867b      	strh	r3, [r7, #50]	; 0x32
+ 8003038:	85fb      	strh	r3, [r7, #46]	; 0x2e
 		  short ASpeed = (unsigned char)RF_RxData[3] | (((uint16_t)RF_RxData[4]) << 8);
  800303a:	4b48      	ldr	r3, [pc, #288]	; (800315c <main+0x6fc>)
  800303c:	78db      	ldrb	r3, [r3, #3]
@@ -5964,7 +5966,7 @@ int main(void)
  8003044:	021b      	lsls	r3, r3, #8
  8003046:	b21b      	sxth	r3, r3
  8003048:	4313      	orrs	r3, r2
- 800304a:	85fb      	strh	r3, [r7, #46]	; 0x2e
+ 800304a:	85bb      	strh	r3, [r7, #44]	; 0x2c
 		  short MSpeed = (unsigned char)RF_RxData[5] | (((uint16_t)RF_RxData[6]) << 8);
  800304c:	4b43      	ldr	r3, [pc, #268]	; (800315c <main+0x6fc>)
  800304e:	795b      	ldrb	r3, [r3, #5]
@@ -5974,7 +5976,7 @@ int main(void)
  8003056:	021b      	lsls	r3, r3, #8
  8003058:	b21b      	sxth	r3, r3
  800305a:	4313      	orrs	r3, r2
- 800305c:	85bb      	strh	r3, [r7, #44]	; 0x2c
+ 800305c:	867b      	strh	r3, [r7, #50]	; 0x32
 		  short Angle = (unsigned char)RF_RxData[7] | (((uint16_t)RF_RxData[8]) << 8);
  800305e:	4b3f      	ldr	r3, [pc, #252]	; (800315c <main+0x6fc>)
  8003060:	79db      	ldrb	r3, [r3, #7]
@@ -6000,11 +6002,11 @@ int main(void)
 			  while(ReturnAngle < Angle){
  8003086:	e021      	b.n	80030cc <main+0x66c>
 				  if (SSpeed <= MSpeed) {
- 8003088:	f9b7 2032 	ldrsh.w	r2, [r7, #50]	; 0x32
- 800308c:	f9b7 302c 	ldrsh.w	r3, [r7, #44]	; 0x2c
+ 8003088:	f9b7 202e 	ldrsh.w	r2, [r7, #46]	; 0x2e
+ 800308c:	f9b7 3032 	ldrsh.w	r3, [r7, #50]	; 0x32
  8003090:	429a      	cmp	r2, r3
  8003092:	dc0e      	bgt.n	80030b2 <main+0x652>
-					  MotorSetValue(SSpeed, -SSpeed);
+					  MotorSetValue(MSpeed, -MSpeed);
  8003094:	8e7b      	ldrh	r3, [r7, #50]	; 0x32
  8003096:	425b      	negs	r3, r3
  8003098:	b29b      	uxth	r3, r3
@@ -6013,10 +6015,10 @@ int main(void)
  80030a0:	4611      	mov	r1, r2
  80030a2:	4618      	mov	r0, r3
  80030a4:	f7ff fc08 	bl	80028b8 <MotorSetValue>
-					  SSpeed += ASpeed;
+					  MSpeed -= ASpeed;
  80030a8:	8e7a      	ldrh	r2, [r7, #50]	; 0x32
- 80030aa:	8dfb      	ldrh	r3, [r7, #46]	; 0x2e
- 80030ac:	4413      	add	r3, r2
+ 80030aa:	8dbb      	ldrh	r3, [r7, #44]	; 0x2c
+ 80030ac:	1ad3      	subs	r3, r2, r3
  80030ae:	b29b      	uxth	r3, r3
  80030b0:	867b      	strh	r3, [r7, #50]	; 0x32
 				  }
@@ -6041,11 +6043,11 @@ int main(void)
 		  } else {
 			  while(ReturnAngle > Angle){
 				  if (SSpeed <= MSpeed) {
- 80030da:	f9b7 2032 	ldrsh.w	r2, [r7, #50]	; 0x32
- 80030de:	f9b7 302c 	ldrsh.w	r3, [r7, #44]	; 0x2c
+ 80030da:	f9b7 202e 	ldrsh.w	r2, [r7, #46]	; 0x2e
+ 80030de:	f9b7 3032 	ldrsh.w	r3, [r7, #50]	; 0x32
  80030e2:	429a      	cmp	r2, r3
  80030e4:	dc0e      	bgt.n	8003104 <main+0x6a4>
-					  MotorSetValue(-SSpeed, SSpeed);
+					  MotorSetValue(-MSpeed, MSpeed);
  80030e6:	8e7b      	ldrh	r3, [r7, #50]	; 0x32
  80030e8:	425b      	negs	r3, r3
  80030ea:	b29b      	uxth	r3, r3
@@ -6054,10 +6056,10 @@ int main(void)
  80030f2:	4611      	mov	r1, r2
  80030f4:	4618      	mov	r0, r3
  80030f6:	f7ff fbdf 	bl	80028b8 <MotorSetValue>
-					  SSpeed += ASpeed;
+					  MSpeed -= ASpeed;
  80030fa:	8e7a      	ldrh	r2, [r7, #50]	; 0x32
- 80030fc:	8dfb      	ldrh	r3, [r7, #46]	; 0x2e
- 80030fe:	4413      	add	r3, r2
+ 80030fc:	8dbb      	ldrh	r3, [r7, #44]	; 0x2c
+ 80030fe:	1ad3      	subs	r3, r2, r3
  8003100:	b29b      	uxth	r3, r3
  8003102:	867b      	strh	r3, [r7, #50]	; 0x32
 				  }

@@ -335,6 +335,37 @@ int main(void)
 			  while(ReturnDist < Dist){
 				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
 				  if (SSpeed < MSpeed) {
+					  MSpeed -= ASpeed;
+				  }
+				  MotorSetValue(-MSpeed -Rot, -MSpeed + Rot);
+				  ReturnDist = Distance[0]/1000000000000;
+				  Update();
+				  if ((Acceleration[0] > Stop) || (Acceleration[1] > Stop) || (Acceleration[2] > Stop)){
+					  break;	// Uderzenie
+				  }
+			  }
+		  } else {
+			  while(ReturnDist > Dist){
+				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
+				  if (SSpeed < MSpeed) {
+					  MSpeed -= ASpeed;
+				  }
+				  MotorSetValue(MSpeed -Rot, MSpeed + Rot);
+				  ReturnDist = Distance[0]/1000000000000;
+				  Update();
+				  if ((Acceleration[0] > Stop) || (Acceleration[1] > Stop) || (Acceleration[2] > Stop)){
+					  break;	// Uderzenie
+				  }
+			  }
+		  }
+		  MotorSetValue(0, 0);
+		  SendReturn(ReturnDist);
+		  break;
+	  }/*
+	  if (Dist > 0){
+			  while(ReturnDist < Dist){
+				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
+				  if (SSpeed < MSpeed) {
 					  SSpeed += ASpeed;
 				  }
 				  MotorSetValue(-SSpeed -Rot, -SSpeed + Rot);
@@ -361,7 +392,7 @@ int main(void)
 		  MotorSetValue(0, 0);
 		  SendReturn(ReturnDist);
 		  break;
-	  }
+	  }*/
 	  case PROG_ROTATE: {
 		  // PROG - START - ACCEL - MAX - ANGLE
 		  short SSpeed = (unsigned char)RF_RxData[1] | (((uint16_t)RF_RxData[2]) << 8);
@@ -374,8 +405,8 @@ int main(void)
 		  if (Angle > 0){
 			  while(ReturnAngle < Angle){
 				  if (SSpeed <= MSpeed) {
-					  MotorSetValue(SSpeed, -SSpeed);
-					  SSpeed += ASpeed;
+					  MotorSetValue(MSpeed, -MSpeed);
+					  MSpeed -= ASpeed;
 				  }
 				  ReturnAngle = Velocity[5]/1000000;
 				  Update();
@@ -383,8 +414,8 @@ int main(void)
 		  } else {
 			  while(ReturnAngle > Angle){
 				  if (SSpeed <= MSpeed) {
-					  MotorSetValue(-SSpeed, SSpeed);
-					  SSpeed += ASpeed;
+					  MotorSetValue(-MSpeed, MSpeed);
+					  MSpeed -= ASpeed;
 				  }
 				  ReturnAngle = Velocity[5]/1000000;
 				  Update();
