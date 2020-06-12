@@ -23,6 +23,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "MY_NRF24.h"
+#include "ssd1306.h"
+#include "i2c-lcd.h"
+#include "string.h"
+#include "my_icons.h"
 //#include "TJ_MPU6050.h"
 #include "AccelGyro.h"
 
@@ -45,6 +49,9 @@
 #define PROG_ROTATE				195
 // Odpowiedz ze cos gotowe i zwraca wartosc
 #define OK						255
+
+
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -200,6 +207,62 @@ void SendReturn(short val){
 		  NRF24_read(RF_RxData, 16);
 	  }
 }
+
+void AdcRead(int16_t *buf){
+	HAL_ADC_Start(&hadc1);
+	if (HAL_ADC_PollForConversion(&hadc1, 1000) == HAL_OK) {
+		buf[0] = HAL_ADC_GetValue(&hadc1);
+	}
+	if (HAL_ADC_PollForConversion(&hadc1, 1000) == HAL_OK) {
+		buf[1] = HAL_ADC_GetValue(&hadc1);
+	}
+	HAL_ADC_Stop(&hadc1);
+}
+
+void UlToStr(char *s, unsigned long bin, unsigned char n)
+{
+    s += n;
+    *s = '\0';
+
+    while (n--)
+    {
+        *--s = (bin % 10) + '0';
+        bin /= 10;
+    }
+}
+
+void Update_SSD(){
+	// Ikona naładowania
+	int16_t Val[2];
+	AdcRead(Val);
+	Val[0] = MapValue(Val[0], 0,4095 , 0, 330.0*3.33);
+	Val[1] = MapValue(Val[1], 0,4095 , 0, 330.0*1.53);
+	Val[0] -= Val[1];
+	char val[5];
+
+	int flat = 0;
+	for (int a = 0; a < 2; a++){
+		UlToStr(val, Val[a], 5);
+		SSD1306_GotoXY (0,a * 20);
+		SSD1306_Puts(val, &Font_11x18, 1);
+		if (Val[a] > 390) {
+			SSD1306_DrawIcon16x16(0+a*20,48, bat3_icon16x16);
+		} else if (Val[a] > 360) {
+			SSD1306_DrawIcon16x16(0+a*20,48, bat2_icon16x16);
+		} else if (Val[a] > 330) {
+			SSD1306_DrawIcon16x16(0+a*20,48, bat1_icon16x16);
+		} else if (Val[a] > 300) {
+			SSD1306_DrawIcon16x16(0+a*20,48, bat0_icon16x16);
+		}else {
+			SSD1306_DrawIcon16x16(0+a*20,48, cancel_icon16x16);
+			flat = 1;
+		}
+	}
+	SSD1306_UpdateScreen();
+	SSD1306_Fill(0);
+	if (flat) while(1);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -237,6 +300,16 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  // Wyswietlacz
+  __HAL_RCC_I2C2_FORCE_RESET();
+  __HAL_RCC_I2C2_RELEASE_RESET();
+  MX_I2C2_Init();
+  __HAL_RCC_I2C2_FORCE_RESET();
+  __HAL_RCC_I2C2_RELEASE_RESET();
+  MX_I2C2_Init();
+  lcd_init();
+  SSD1306_Init();
+  Update_SSD();
 
   // Timer
   HAL_TIM_Base_Start_IT(&htim3);
@@ -252,12 +325,7 @@ int main(void)
   NRF24_enableAckPayload();
 
   // MPU
-  __HAL_RCC_I2C2_FORCE_RESET();
-  __HAL_RCC_I2C2_RELEASE_RESET();
-  MX_I2C2_Init();
-  __HAL_RCC_I2C2_FORCE_RESET();
-  __HAL_RCC_I2C2_RELEASE_RESET();
-  MX_I2C2_Init();
+
   Init(&hi2c2, &htim2);	// NIC NIE MOZE BYC PO TYM, URUCHAMIA SIE ZEGAR DO CALKOWANIA
   /* USER CODE END 2 */
 
@@ -507,12 +575,12 @@ static void MX_ADC1_Init(void)
   /** Common config 
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 2;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -521,7 +589,15 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_3;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel 
+  */
+  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
