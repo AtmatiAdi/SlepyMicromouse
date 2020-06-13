@@ -65,6 +65,8 @@ void Error_Handler(void);
 #define TIM_PRE 72000-1
 #define LED_Pin GPIO_PIN_13
 #define LED_GPIO_Port GPIOC
+#define VBUS_3V3_Pin GPIO_PIN_2
+#define VBUS_3V3_GPIO_Port GPIOA
 #define BAT_3V7_Pin GPIO_PIN_3
 #define BAT_3V7_GPIO_Port GPIOA
 #define BAT_7V6_Pin GPIO_PIN_4

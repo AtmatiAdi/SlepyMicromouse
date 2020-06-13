@@ -66,12 +66,13 @@ void Callibrate(int count){
     	TmpCall[3] += GyroData.x;
     	TmpCall[4] += GyroData.y;
     	TmpCall[5] += GyroData.z;
-
+    	NRF24_DelayMicroSeconds(100);
 		Count--;
     }
     for (int a = 0; a < 6; a++){
     	Callibration[a] = TmpCall[a]/count;
     }
+    Timer.Instance->CNT = 0;
 }
 
 void GetAcceleration(char out[], int start){

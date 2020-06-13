@@ -216,6 +216,9 @@ void AdcRead(int16_t *buf){
 	if (HAL_ADC_PollForConversion(&hadc1, 1000) == HAL_OK) {
 		buf[1] = HAL_ADC_GetValue(&hadc1);
 	}
+	if (HAL_ADC_PollForConversion(&hadc1, 1000) == HAL_OK) {
+		buf[1] = HAL_ADC_GetValue(&hadc1);
+	}
 	HAL_ADC_Stop(&hadc1);
 }
 
@@ -233,11 +236,11 @@ void UlToStr(char *s, unsigned long bin, unsigned char n)
 
 void Update_SSD(){
 	// Ikona naładowania
-	int16_t Val[2];
+	int16_t Val[3];
 	AdcRead(Val);
-	Val[0] = MapValue(Val[0], 0,4095 , 0, 330.0*3.33);
-	Val[1] = MapValue(Val[1], 0,4095 , 0, 330.0*1.53);
-	Val[0] -= Val[1];
+	Val[0] = MapValue(Val[0], 0,4095 , 0, 1000);
+	Val[1] = MapValue(Val[1], 0,4095 , 0, 1000);
+	//Val[0] -= Val[1];
 	char val[5];
 
 	int flat = 0;
@@ -396,9 +399,10 @@ int main(void)
 		  short ReturnDist = 0;
 		  short Stop = (unsigned char)RF_RxData[9] | (((uint16_t)RF_RxData[10]) << 8);
 		  double Rot;
-		  double P = 0.05, I = 0.2;
+		  double P = 0.02, I = 0.1;
 		  Callibrate(255);
 		  Update();
+		  /*
 		  if (Dist > 0){
 			  while(ReturnDist < Dist){
 				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
@@ -429,7 +433,7 @@ int main(void)
 		  MotorSetValue(0, 0);
 		  SendReturn(ReturnDist);
 		  break;
-	  }/*
+	  }*/
 	  if (Dist > 0){
 			  while(ReturnDist < Dist){
 				  Rot = P * Acceleration[5] + I * Velocity[5]/1000000.0;
@@ -460,7 +464,7 @@ int main(void)
 		  MotorSetValue(0, 0);
 		  SendReturn(ReturnDist);
 		  break;
-	  }*/
+	  }
 	  case PROG_ROTATE: {
 		  // PROG - START - ACCEL - MAX - ANGLE
 		  short SSpeed = (unsigned char)RF_RxData[1] | (((uint16_t)RF_RxData[2]) << 8);
@@ -580,7 +584,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 2;
+  hadc1.Init.NbrOfConversion = 3;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -598,6 +602,15 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_4;
   sConfig.Rank = ADC_REGULAR_RANK_2;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel 
+  */
+  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Rank = ADC_REGULAR_RANK_3;
+  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
