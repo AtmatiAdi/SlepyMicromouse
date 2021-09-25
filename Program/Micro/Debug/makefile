@@ -15,6 +15,12 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(S_DEPS)),)
+-include $(S_DEPS)
+endif
+ifneq ($(strip $(S_UPPER_DEPS)),)
+-include $(S_UPPER_DEPS)
+endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
 endif
@@ -40,8 +46,8 @@ Micro.bin \
 all: Micro.elf secondary-outputs
 
 # Tool invocations
-Micro.elf: $(OBJS) $(USER_OBJS) D:\1.Projects\1.Roboty\5.Micromouse\Program\Micro\STM32F103C8TX_FLASH.ld
-	arm-none-eabi-gcc -o "Micro.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\1.Projects\1.Roboty\5.Micromouse\Program\Micro\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Micro.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Micro.elf: $(OBJS) $(USER_OBJS) N:\GitProjects\SlepyMicromouse\Program\Micro\STM32F103C8TX_FLASH.ld
+	arm-none-eabi-gcc -o "Micro.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"N:\GitProjects\SlepyMicromouse\Program\Micro\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Micro.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
